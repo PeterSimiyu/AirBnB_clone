@@ -5,7 +5,7 @@ Handles serialization and deserialization
 of instances to and from json
 """
 import json
-from models.base_model import BasemModel
+from models.base_model import BaseModel
 from models.user import User
 from models.state import State
 from models.city import City
@@ -59,7 +59,7 @@ class FileStorage():
         try:
             with open(FileStorage.__file_path, "r") as f:
                 dict_objs = json.load(f)
-            for obj i dict_objs.values():
+            for obj in dict_objs.values():
                 # pick the classname
                 class_name = obj["__class__"]
                 self.new(eval(class_name)(**obj))
